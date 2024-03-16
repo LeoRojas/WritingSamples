@@ -1,132 +1,144 @@
-Event-Driven Architecture with Ruby on Rails
+# Event-Driven Architecture with Ruby on Rails
 
-Introduction
+## Introduction
 Event-driven architecture (EDA) is a software architecture pattern that promotes the production, detection, consumption, and reaction to events. In event-driven architecture, components or services communicate with each other by exchanging events, allowing for loose coupling and flexibility in system design.
 
-Prerequisites
-Ruby on Rails experience
-Experience using event queues or message-driven architectures
+## Prerequisites
+- Ruby on Rails experience
+- Experience using event queues or message-driven architectures
 
-Table of Contents
+## Table of Contents
 
-Introduction
-Prerequisites
-Table of Contents
-Key components in Event-driven architecture
-Event-Driven Architecture use cases
-Benefits of event-driven architecture include:
-Disadvantages of event streaming
-Event-Driven Architecture tools
-Event-Driven Architecture implementation on Ruby on Rails project
-Step 1: Set Up Event Bus
-Step 2: Add RabbitMQ Gem to Rails Project
-Step 3: Create Event Class
-Step 4: Create Event Producer
-Step 5: Trigger Event on Blog Post Creation
-Step 6: Create Event Consumer
-Step 7: Start Event Consumer
-Implementation considerations
-Fault Tolerance
-Events processing
-Conclusion
-Additional Resources
+[Introduction](##Introduction)
 
-Key components in Event-driven architecture
+[Prerequisites](##Prerequisites)
 
-Event: An event is a meaningful occurrence or state change within a system that interests the system or its users. Various sources, such as user actions, system events, or external factors, can trigger events. The event is often represented as a text message, and it may include many contextual attributes such as when it occurred, where it occurred, etc. 
+[Table of Contents](##Table-of-Contents)
 
-Event Producer: The component or service responsible for generating and emitting events. It publishes events to an event bus or directly to other components interested in those events. The event producer service can be frontend websites, microservices, IoT devices, SaaS applications, etc.
+[Key components in Event-driven architecture](##Key-components-in-Event-driven-architecture)
 
-Event Consumer: The component or service that subscribes to and processes events. It reacts to events by performing specific actions or triggering further processes. The consumers in many implementations are called workers, especially when the EDA implementation includes background jobs processes and an event queue.
+[Event-Driven Architecture use cases](##Event-Driven-Architecture-use-cases)
 
-Event Bus: A communication channel that facilitates the exchange of events between different components or services. The event bus acts as a mediator, allowing event producers to publish events and event consumers to subscribe to the events they are interested in.
+[Benefits of event-driven architecture include](##Benefits-of-event-driven-architecture-include)
 
-Event Handler: The logic or code that executes in response to a specific event. It is part of the event consumer and defines how the system should respond when a particular event occurs. Consumers can have different event handlers, and it is also typical to have different consumers depending on the type or structure of the event.
-Event-Driven Architecture use cases
+[Disadvantages of event streaming](##Disadvantages-of-event-streaming)
+
+[Event-Driven Architecture tools](##Event-Driven-Architecture-tools)
+
+[Event-Driven Architecture implementation on Ruby on Rails project](##Event-Driven-Architecture-implementation-on-Ruby-on-Rails-project)
+
+[Implementation considerations](##Implementation-considerations)
+
+[Conclusion](##Conclusion)
+
+[Additional Resources](##Additional-Resources)
+
+## Key components in Event-driven architecture
+
+**Event:** An event is a meaningful occurrence or state change within a system that interests the system or its users. Various sources, such as user actions, system events, or external factors, can trigger events. The event is often represented as a text message, and it may include many contextual attributes such as when it occurred, where it occurred, etc. 
+
+**Event Producer:** The component or service responsible for generating and emitting events. It publishes events to an event bus or directly to other components interested in those events. The event producer service can be frontend websites, microservices, IoT devices, SaaS applications, etc.
+
+**Event Consumer:** The component or service that subscribes to and processes events. It reacts to events by performing specific actions or triggering further processes. The consumers in many implementations are called workers, especially when the EDA implementation includes background jobs processes and an event queue.
+
+**Event Bus:** A communication channel that facilitates the exchange of events between different components or services. The event bus acts as a mediator, allowing event producers to publish events and event consumers to subscribe to the events they are interested in.
+
+**Event Handler:** The logic or code that executes in response to a specific event. It is part of the event consumer and defines how the system should respond when a particular event occurs. Consumers can have different event handlers, and it is also typical to have different consumers depending on the type or structure of the event.
+
+## Event-Driven Architecture use cases
+
 Event-driven architecture is commonly used in various domains, such as:
 
-Microservices Communication: Each microservice can act as an event producer or consumer, allowing services to communicate asynchronously.
+- **Microservices Communication:** Each microservice can act as an event producer or consumer, allowing services to communicate asynchronously.
 
-Real-time Data Processing: Financial trading platforms, social media feeds, and monitoring systems. Events can be processed as they occur, enabling quick reactions to changing conditions.
+- **Real-time Data Processing:** Financial trading platforms, social media feeds, and monitoring systems. Events can be processed as they occur, enabling quick reactions to changing conditions.
 
-IoT (Internet of Things): IoT applications generate a vast amount of data from connected devices.EDA helps handle and process events generated by these devices, such as sensor readings, device status changes, or user interactions.
+- **IoT (Internet of Things):** IoT applications generate a vast amount of data from connected devices.EDA helps handle and process events generated by these devices, such as sensor readings, device status changes, or user interactions.
 
-Log and Monitoring Systems: Events, such as application errors, performance metrics, or security alerts, can be processed and analyzed in real-time to identify issues and improve system health.
+- **Log and Monitoring Systems:** Events, such as application errors, performance metrics, or security alerts, can be processed and analyzed in real-time to identify issues and improve system health.
 
-User Notifications and Collaboration: Applications that involve user interactions and collaboration, such as messaging platforms or collaborative editing tools, can use EDA to notify users of relevant events. For example, sending notifications when a new message is received or when changes are made to shared documents.
+- **User Notifications and Collaboration:** Applications that involve user interactions and collaboration, such as messaging platforms or collaborative editing tools, can use EDA to notify users of relevant events. For example, sending notifications when a new message is received or when changes are made to shared documents.
 
-Event Sourcing: Event-driven architecture is often employed in event sourcing patterns, where changes in application state are captured as a sequence of events. This can be useful in scenarios where auditing, versioning, or reconstructing the state of the system at a specific point in time is important.
+- **Event Sourcing:** Event-driven architecture is often employed in event sourcing patterns, where changes in application state are captured as a sequence of events. This can be useful in scenarios where auditing, versioning, or reconstructing the state of the system at a specific point in time is important.
 
-E-commerce: EDA can be applied in e-commerce platforms to handle events like order placement, payment confirmation, and inventory updates. Additionally, recommendation systems can utilize events to track user behavior and provide personalized recommendations.
+- **E-commerce:** EDA can be applied in e-commerce platforms to handle events like order placement, payment confirmation, and inventory updates. Additionally, recommendation systems can utilize events to track user behavior and provide personalized recommendations.
 
-Integration with Third-party Services: When integrating with external services or APIs, EDA can be used to handle events from these services, ensuring that the integration is decoupled and can adapt to changes in the external systems.
+- **Integration with Third-party Services:** When integrating with external services or APIs, EDA can be used to handle events from these services, ensuring that the integration is decoupled and can adapt to changes in the external systems.
 
 These are not all EDA use cases, but these use cases are enough to demonstrate the flexibility and scalability of event-driven architecture in addressing a wide range of scenarios where timely and loosely coupled communication is required.
 It’s unnecessary to memorize all the use cases, but understanding them is essential to identify when a problem fits an EDA implementation well.
 
-Benefits of Event-driven architecture include:
+## Benefits of Event-driven architecture include
 
-Loose Coupling: Components are decoupled; this means that there is no dependency between event producers and consumers because they interact through events, allowing for independent development and changes to individual components without affecting the entire system.
+**Loose Coupling:** Components are decoupled; this means that there is no dependency between event producers and consumers because they interact through events, allowing for independent development and changes to individual components without affecting the entire system.
 
-Scalability: Event-driven systems can scale more efficiently, as components can be added or removed without disrupting the overall architecture.
+**Scalability:** Event-driven systems can scale more efficiently, as components can be added or removed without disrupting the overall architecture.
 
-Flexibility: The system can adapt to changing requirements or new features by adding or modifying event producers and consumers.
+**Flexibility:** The system can adapt to changing requirements or new features by adding or modifying event producers and consumers.
 
-Asynchronicity: Events can be processed asynchronously, enabling systems to handle a large number of events without blocking or waiting for immediate responses.
+**Asynchronicity:** Events can be processed asynchronously, enabling systems to handle a large number of events without blocking or waiting for immediate responses.
 
-Fault Tolerance: An event processing can fail; this failure doesn’t affect the system in a fatal way (downtime). These events are not discarded or deleted right away; they usually are added to a retry system, and even if they fail to be processed again, they usually end up stored somewhere; this is all generally handled by EDA tools, and its purpose is to don’t lose any data, or as less as possible.
+**Fault Tolerance:** An event processing can fail; this failure doesn’t affect the system in a fatal way (downtime). These events are not discarded or deleted right away; they usually are added to a retry system, and even if they fail to be processed again, they usually end up stored somewhere; this is all generally handled by EDA tools, and its purpose is to don’t lose any data, or as less as possible.
 
-Real-Time Handling: EDA can facilitate that events get processed very fast, allowing applications to give real time feedback, providing a good user experience.
+**Real-Time Handling:** EDA can facilitate that events get processed very fast, allowing applications to give real time feedback, providing a good user experience.
 
-High Performance: Using EDA tools properly configured to implement the architecture correctly results in a system that can handle many messages per minute, even thousands.
+**High Performance:** Using EDA tools properly configured to implement the architecture correctly results in a system that can handle many messages per minute, even thousands.
 
-Disadvantages of event streaming
+## Disadvantages of event streaming
 
-Monitoring: The EDA tools sometimes don’t provide enough monitoring features, so additional tools are needed, e.g., Datadog, Sentry, New Relic, AWS CloudWatch, Azure Monitor, etc.
+**Monitoring:** The EDA tools sometimes don’t provide enough monitoring features, so additional tools are needed, e.g., Datadog, Sentry, New Relic, AWS CloudWatch, Azure Monitor, etc.
 
-Configuration: Some tools can be overwhelming due to their large amount of features or the presence of many configuration attributes. Luckily, most complex tools are well-documented and have outstanding customer support.
+**Configuration:** Some tools can be overwhelming due to their large amount of features or the presence of many configuration attributes. Luckily, most complex tools are well-documented and have outstanding customer support.
 
-Architecture setup: In order to build and configure all the physical architecture (servers, event bus, security, etc.) needed for EDA implementation, it’s not trivial, so a software engineer with experience in provisioning infrastructure or a DevOps would probably be needed. An appropriate infrastructure allows the scalability and fault tolerance that we mentioned in the benefits section.
-Event-Driven Architecture tools
+**Architecture setup:** In order to build and configure all the physical architecture (servers, event bus, security, etc.) needed for EDA implementation, it’s not trivial, so a software engineer with experience in provisioning infrastructure or a DevOps would probably be needed. An appropriate infrastructure allows the scalability and fault tolerance that we mentioned in the benefits section.
+
+## Event-Driven Architecture tools
 
 Popular implementations of event-driven architectures include:
 
 Message brokers:
-Apache Kafka
-RabbitMQ
+- Apache Kafka
+- RabbitMQ
 
 Cloud-based solutions:
-AWS EventBridge
-Azure Event Grid.
-Confluent Platform
-Apache Pulsar (Cloud-based message broker)
+- AWS EventBridge
+- Azure Event Grid.
+- Confluent Platform
+- Apache Pulsar (Cloud-based message broker)
 
 More information about these tools can be found in the “Additional Resources” section.
-Event-Driven Architecture implementation on Ruby on Rails project
 
-Implementing Event-driven architecture (EDA) in a Ruby on Rails project involves setting up an event bus, creating event producers, and developing event consumers.
+## Event-Driven Architecture implementation on Ruby on Rails project
+
+Implementing Event-driven architecture (EDA) in a Ruby on Rails project **involves setting up an event bus, creating event producers, and developing event consumers.**
 I'll provide a step-by-step guide using a simple example. For this example, let's consider a scenario where we have a blog application, and we want to notify users when a new blog post is published.
 
-Step 1: Set Up Event Bus
+### Step 1: Set Up Event Bus
 Choose a message broker to act as your event bus. For this example, we'll use RabbitMQ.
 
 Install RabbitMQ:
-
+```
 # On macOS with Homebrew
 brew install rabbitmq
+```
 For other operating systems, the instructions can be found on RabbitMQ Installation Guide.
 
 Start RabbitMQ:
 
-rabbitmq-server
-Step 2: Add RabbitMQ Gem to Rails Project
+```rabbitmq-server```
+
+### Step 2: Add RabbitMQ Gem to Rails Project
 Add the bunny gem to your Rails project's Gemfile and run bundle install:
 
+```ruby
 # Gemfile
 gem 'bunny'
-Step 3: Create Event Class
+```
+
+### Step 3: Create Event Class
 Create an event class representing the "New Blog Post" event:
 
+```ruby
 # app/events/new_blog_post_event.rb
 class NewBlogPostEvent
   attr_reader :blog_post
@@ -136,8 +148,12 @@ class NewBlogPostEvent
     @blog_post = blog_post
   end
 end
-Step 4: Create Event Producer
+```
+
+### Step 4: Create Event Producer
 Create an event producer that publishes the "New Blog Post" event to RabbitMQ:
+
+```ruby
 # app/services/blog_post_service.rb
 class BlogPostService
   def publish_new_blog_post_event(blog_post)
@@ -163,9 +179,12 @@ class BlogPostService
     connection.close
   end
 end
-Step 5: Trigger Event on Blog Post Creation
+```
+
+### Step 5: Trigger Event on Blog Post Creation
 Modify your BlogPost model to trigger the "New Blog Post" event when a new post is created:
 
+```ruby
 # app/models/blog_post.rb
 class BlogPost < ApplicationRecord
   after_create :publish_new_blog_post_event
@@ -178,9 +197,12 @@ class BlogPost < ApplicationRecord
     BlogPostService.new.publish_new_blog_post_event(self)
   end
 end
-Step 6: Create Event Consumer
+```
+
+### Step 6: Create Event Consumer
 Create an event consumer that subscribes to the "New Blog Post" event and performs some action (e.g., sending notifications to users):
 
+```ruby
 # app/consumers/new_blog_post_consumer.rb
 class NewBlogPostConsumer
   def initialize
@@ -222,45 +244,53 @@ class NewBlogPostConsumer
     puts "New Blog Post Published: #{blog_post['title']}"
   end
 end
-Step 7: Start Event Consumer
+```
+
+### Step 7: Start Event Consumer
 Start the event consumer to listen for and handle "New Blog Post" events:
 
+```ruby
 # Run this in a separate terminal window
 consumer = NewBlogPostConsumer.new
 consumer.start
+```
 
 Now, when you create a new blog post, the event producer will publish the "New Blog Post" event, and the event consumer will handle the event by printing a message (in this case, you can extend it to perform more meaningful actions like sending notifications).
 
 This is a simplified example, and in a real-world scenario, you should handle error scenarios, use background jobs for better performance, and consider security aspects. Additionally, you can explore using more advanced tools like the karafka gem for building event-driven applications in Rails.
 
-Implementation considerations
-Fault Tolerance
+## Implementation considerations
+
+### Fault Tolerance
 There are architectural choices that you can make that will improve your implementation fault tolerance; for example, host the Bunny workers (Event consumers) and the RabbitMQ server (Event bus) in different physical servers so that if one of the servers gets unresponsive or gets downtime, the other can still work correctly (Isolation), the same can be applied to your application web server (if it has any) and database.
 
 Monitoring every part of the event-driven architecture it’s essential for several reasons:
-Check that events are being generated and are being processed
-Check if the processing rate is enough to handle the event creation rate.
-Detect any error that affects a part of the system. This is crucial because if one component of the EDA stops working, it can affect the workflow. 
-Events processing
-It’s important to know that the event producer and the event consumer do not need to be written in the same programming language. For instance, the producer can be a Rails project, like the blog_post_service.rb we created, and the consumer can be a Python file/worker. They only need to be able to communicate with the event queue.
 
-RabbitMQ and other similar tools provide many configuration options that can be used to customize the implementation as needed. One option to consider is that there can be many queues, and each can have a different priority, so we can choose what events the consumers will prioritize. Other options that can be tweaked are the name of the default queue, the size of the queue, if events that fail to be processed are going to be sent to the “retry queue” and how many retries are going to be performed after deleting the event or sending it to a “garbage queue”, etc.
+- Check that events are being generated and are being processed
+- Check if the processing rate is enough to handle the event creation rate.
+- Detect any error that affects a part of the system. This is crucial because if one component of the EDA stops working, it can affect the workflow. 
 
-Conclusion
+### Events processing
+
+- It’s important to know that the event producer and the event consumer do not need to be written in the same programming language. For instance, the producer can be a Rails project, like the blog_post_service.rb we created, and the consumer can be a Python file/worker. They only need to be able to communicate with the event queue.
+
+- RabbitMQ and other similar tools provide many configuration options that can be used to customize the implementation as needed. One option to consider is that there can be many queues, and each can have a different priority, so we can choose what events the consumers will prioritize. Other options that can be tweaked are the name of the default queue, the size of the queue, if events that fail to be processed are going to be sent to the “retry queue” and how many retries are going to be performed after deleting the event or sending it to a “garbage queue”, etc.
+
+## Conclusion
 
 Event-driven architecture has many relevant use cases; for that reason, we encourage you to understand how it works and learn to implement it with the tools that better fit your needs.
 This architecture offers many configuration options, its performance can be optimized, and it scales really well. Still, it’s important to remember that all parts of the system need to be monitored constantly to ensure proper event generation and processing.
 
 Many times, this architecture is implemented to collect data from many different sources; in those cases, the system implementation is but only the first step of a larger workflow, which probably involves using the collected data to generate relevant metrics, KPIs, business intelligence, or as a source for other kinds of data analysis.
 
-Additional Resources
+## Additional Resources
 
-Bunny gem github. https://github.com/ruby-amqp/bunny
-RabbitMQ official documentation. https://www.rabbitmq.com/tutorials/tutorial-one-ruby.html
-Karafka https://github.com/karafka/karafka
-AWS EventBridge https://aws.amazon.com/eventbridge/
-Azure Event Grid. https://azure.microsoft.com/en-us/products/event-grid/
-Apache Kafka. https://kafka.apache.org/
-Confluent Platform. https://www.confluent.io/
-Apache Pulsar. https://pulsar.apache.org/
+- Bunny gem github. https://github.com/ruby-amqp/bunny
+- RabbitMQ official documentation. https://www.rabbitmq.com/tutorials/tutorial-one-ruby.html
+- Karafka https://github.com/karafka/karafka
+- AWS EventBridge https://aws.amazon.com/eventbridge/
+- Azure Event Grid. https://azure.microsoft.com/en-us/products/event-grid/
+- Apache Kafka. https://kafka.apache.org/
+- Confluent Platform. https://www.confluent.io/
+- Apache Pulsar. https://pulsar.apache.org/
 
