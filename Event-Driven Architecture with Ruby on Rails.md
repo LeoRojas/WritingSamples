@@ -9,29 +9,29 @@ Event-driven architecture (EDA) is a software architecture pattern that promotes
 
 ## Table of Contents
 
-[Introduction](##Introduction)
+[Introduction](#Introduction)
 
-[Prerequisites](##Prerequisites)
+[Prerequisites](#Prerequisites)
 
-[Table of Contents](##Table-of-Contents)
+[Table of Contents](#Table-of-Contents)
 
-[Key components in Event-driven architecture](##Key-components-in-Event-driven-architecture)
+[Key components in Event-driven architecture](#Key-components-in-Event-driven-architecture)
 
-[Event-Driven Architecture use cases](##Event-Driven-Architecture-use-cases)
+[Event-Driven Architecture use cases](#Event-Driven-Architecture-use-cases)
 
-[Benefits of event-driven architecture include](##Benefits-of-event-driven-architecture-include)
+[Benefits of event-driven architecture include](#Benefits-of-event-driven-architecture-include)
 
-[Disadvantages of event streaming](##Disadvantages-of-event-streaming)
+[Disadvantages of event streaming](#Disadvantages-of-event-streaming)
 
-[Event-Driven Architecture tools](##Event-Driven-Architecture-tools)
+[Event-Driven Architecture tools](#Event-Driven-Architecture-tools)
 
-[Event-Driven Architecture implementation on Ruby on Rails project](##Event-Driven-Architecture-implementation-on-Ruby-on-Rails-project)
+[Event-Driven Architecture implementation on Ruby on Rails project](#Event-Driven-Architecture-implementation-on-Ruby-on-Rails-project)
 
-[Implementation considerations](##Implementation-considerations)
+[Implementation considerations](#Implementation-considerations)
 
-[Conclusion](##Conclusion)
+[Conclusion](#Conclusion)
 
-[Additional Resources](##Additional-Resources)
+[Additional Resources](#Additional-Resources)
 
 ## Key components in Event-driven architecture
 
