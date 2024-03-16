@@ -4,9 +4,9 @@
 
 My name is Leonardo Rojas. I’m a software engineer and technical writer; my writing experience includes blog posts, software documentation, API documentation, tutorials, how-tos, and step-by-step guides in the companies I have worked for in the past. Regarding my software engineer experience, I have over ten years of experience in software development and deploying web applications, mainly using Ruby on Rails, a framework I am passionate about and proficient in.
 
-In addition to Ruby on Rails, I have a strong background in computer science (Bachelor's Degree), Python, PHP, and AWS, which I have leveraged to build scalable and secure solutions for the media production industry. I also enjoy mentoring and sharing my knowledge with other developers, mainly at Codementor. On this online platform, I have helped hundreds of clients with various Ruby and AWS-related challenges. I aim to continue learning and growing as a software engineer and to create impactful and innovative products that solve real-world problems.
+In addition to Ruby on Rails, I have a strong background in computer science (Bachelor's Degree), Python, PHP, and AWS, which I have leveraged to build scalable and secure solutions for the media production industry. I also enjoy mentoring and sharing my knowledge with other developers, mainly at Codementor.
 
-In this repository you can found articles that I wrote for blogs. More wrting samples and other kind of technical documents such as database designs, cloud architectures, etc, can be requested via Linkedin or using the contact email. The writing samples available at this moment are the following:
+In this repository, you can find articles that I wrote for blogs. More writing samples and other kinds of technical documents, such as database designs, cloud architectures, etc, can be requested via Linkedin or contact email. The writing samples available at this moment are the following:
 
 - [Event-Driven Architecture with Ruby on Rails.md](<Event-Driven Architecture with Ruby on Rails.md>)
 
