@@ -25,6 +25,7 @@ If you would like to connect or learn more about my software engineer experience
 
 On this online platform, I have helped many people with various topics: AWS, Ruby on Rails, PHP, Laravel, Computer Science, debugging, algorithm optimization, reducing cloud costs, improving software solutions' security, optimizing database queries, etc.
 
+<br/>
 
-Email:
-lerojasrojas@gmail.com
+[![Email](https://img.shields.io/badge/Email-lerojasrojas@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white&labelColor=101010)](mailto:lerojasrojas@gmail.com)
+
