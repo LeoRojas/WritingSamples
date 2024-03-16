@@ -14,8 +14,11 @@ In this repository, you can find articles that I wrote for blogs. More writing s
 
 ## Contact
 
-[Linkedin profile:](https://www.linkedin.com/in/leonardo-rojas-b762248a/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Leonardo_Rojas-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=101010)](https://www.linkedin.com/in/leonardo-rojas-b762248a/)
+
 If you would like to connect or learn more about my software engineer experience
+
+<br/>
 
 
 [![Contact me on Codementor](https://www.codementor.io/m-badges/leonardorojas/find-me-on-cm-b.svg)](https://www.codementor.io/@leonardorojas?refer=badge)
