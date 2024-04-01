@@ -11,6 +11,8 @@ In this repository, you can find articles that I wrote for blogs. More writing s
 - [Event-Driven Architecture with Ruby on Rails.md](<Event-Driven Architecture with Ruby on Rails.md>)
 
 - [Caching Strategies for Ultra-High Performance in Ruby on Rails.md](<Caching Strategies for Ultra-High Performance in Ruby on Rails.md>)
+  
+- [Best Practices for Avoiding Database Migration Pitfalls with Ruby on Rails.md](<Best Practices for Avoiding Database Migration Pitfalls with Ruby on Rails.md>)
 
 ## Contact
 
