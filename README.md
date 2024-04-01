@@ -14,6 +14,8 @@ In this repository, you can find articles that I wrote for blogs. More writing s
   
 - [Best Practices for Avoiding Database Migration Pitfalls with Ruby on Rails.md](<Best Practices for Avoiding Database Migration Pitfalls with Ruby on Rails.md>)
 
+-[Mastering Advanced Authentication and Authorization in Ruby on Rails.md](<Mastering Advanced Authentication and Authorization in Ruby on Rails.md>) 
+
 ## Contact
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Leonardo_Rojas-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=101010)](https://www.linkedin.com/in/leonardo-rojas-b762248a/)
