@@ -12,54 +12,58 @@ Migrations are stored as files in the db/migrate directory. Migrations also spec
 ## Creating New Migrations
 Now that we know what a migration is and some of its benefits, it would be good to learn how to create one. We can create them using the following convenient command; this will create an empty migration with the specified name:
 
-$ bin/rails generate migration AddPartNumberToProducts
+```$ bin/rails generate migration AddPartNumberToProducts```
 
+```ruby
 class AddPartNumberToProducts < ActiveRecord::Migration[6.0]
   def change
   end
 end
+```
 
 A convenient feature of migrations is that we can specify their name in the form "AddXXXToYYY" or "RemoveXXXFromYYY" followed by a list of column names and types. Then, a migration containing the appropriate add_column and remove_column statements will be created. This saves us time and avoids typos.
 
-$ bin/rails generate migration AddPartNumberToProducts part_number:string
+```$ bin/rails generate migration AddPartNumberToProducts part_number:string```
 
+```ruby
 class AddPartNumberToProducts < ActiveRecord::Migration
   def change
     add_column :products, :part_number, :string
   end
 end
-
+```
 
 ## Running Migrations
 The following command executes every migration's change or up method that has yet to be run. The order in which they are executed is determined by the timestamp on the migration file name.
 
-rails db:migrate
+```$ rails db:migrate```
 
 ## Rollback and Recovery
 A common task is to rollback the last migration. For example, if you made a mistake in it and wish to correct it. Rather than tracking down the version number associated with the previous migration, you can run:
 
-$ bin/rake db:rollback
+```$ bin/rake db:rollback```
 
 This will rollback the latest migration, either by reverting the change method or by running the down method. If you need to undo several migrations, you can provide a STEP parameter:
 
-$ bin/rake db:rollback STEP=3
+```$ bin/rake db:rollback STEP=3```
 
 This will revert the last three migrations.
 
 The db:migrate:redo task is a shortcut for doing a rollback and then migrating back up again. As with the db:rollback task, you can use the STEP parameter if you need to go more than one version back, for example:
 
-$ bin/rake db:migrate:redo STEP=3
+```$ bin/rake db:migrate:redo STEP=3```
 
 Using db:migrate, we can achieve the same result that we get when we use rollback and redo. But they are convenient because you do not need to specify the version to migrate to explicitly.
 You can get your database to a specific version in time using this command:
 
-$ bin/rake db:migrate VERSION=20080906120000
+```$ bin/rake db:migrate VERSION=20080906120000```
 
 This will execute the change method, ups and downs methods in the migration files until the database schema reaches the version parameter, which is the time timestamp specified in the migrations file name.
 
 ## Executing SQL
 Raw sql can be executed in a migration file. Let’s look at the following example.
 
+```ruby
 class ExampleMigration < ActiveRecord::Migration
   def change
     create_table :products do |t|
@@ -88,7 +92,7 @@ class ExampleMigration < ActiveRecord::Migration
     rename_column :users, :email, :email_address
   end
 end
-
+```
 We can see the command execute, which allows raw SQL to be executed inside a migration file. Raw SQL should always be the last option; most times, active record models or helpers are enough to achieve what we need.
 
 
@@ -123,6 +127,8 @@ It’s a good idea to ensure your migration can be undone by running rails db: r
 When making irreversible changes to the database, it’s a good practice to create a database backup before proceeding.
 
 # Drop a column with caution
+
+```ruby
 class RemoveColumnFromProducts < ActiveRecord::Migration[6.0]
   def change
     remove_column :products, :deprecated_column
@@ -133,24 +139,26 @@ class RemoveColumnFromProducts < ActiveRecord::Migration[6.0]
     raise ActiveRecord::IrreversibleMigration
   end
 end
+```
 
 ### Test Migrations in a Controlled Environment
 Create test environments that mirror your production environment closely. Running migrations in these environments helps identify and address potential issues before reaching the production database.
 
 
 # Run migrations in the test environment
-$ rake db:migrate RAILS_ENV=test
+```$ rake db:migrate RAILS_ENV=test```
 
 ### Implement Atomic Migrations
 Keep each migration atomic, representing a single change to the database schema. Avoid combining multiple changes into a single migration, as this can complicate rollback procedures.
 
 # Example of an atomic migration
+```ruby
 class AddColumnToUsers < ActiveRecord::Migration[6.0]
   def change
     add_column :users, :new_column, :string
   end
 end
-
+```
 
 ### Avoid creating records inside migration files.
 If you need to add data inside a migration file, make sure it’s the only way to achieve your goal. Most of the time, adding records in migration files can be replaced by rake tasks created for that specific purpose. There are similar cases in which updates to records need to be performed; for example, after adding a deleted boolean column to a model with a default value of false, we would need to update the existing records and set the new column's default value. This update can be done inside a migration file but also using a rake task; the choice is up to you.
