@@ -2,7 +2,7 @@
 
 ## Hello!
 
-My name is Leonardo Rojas. I’m a software engineer and technical writer; my writing experience includes blog posts, software documentation, API documentation, tutorials, how-tos, and step-by-step guides in the companies I have worked for in the past. Regarding my software engineer experience, I have over ten years of experience in software development and deploying web applications, mainly using Ruby on Rails, a framework I am passionate about and proficient in.
+My name is Leonardo Rojas. I’m a software engineer and technical writer; my writing experience includes blog posts, software documentation, API documentation, tutorials, how-tos, and step-by-step guides in the companies I have worked for in the past. Regarding my software engineer experience, I have over twelve years of experience in software development and deploying web applications, mainly using Ruby on Rails, a framework I am passionate about and proficient in.
 
 In addition to Ruby on Rails, I have a strong background in computer science (Bachelor's Degree), Python, PHP, and AWS, which I have leveraged to build scalable and secure solutions for the media production industry. I also enjoy mentoring and sharing my knowledge with other developers, mainly at Codementor.
 
